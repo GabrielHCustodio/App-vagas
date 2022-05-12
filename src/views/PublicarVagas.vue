@@ -1,11 +1,16 @@
 <template>
   <div>
-    <p>Publicar Vaga</p>
+    <p>{{titulo}}</p>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'PublicarVagas'
+    name: 'PublicarVagas',
+    data(){
+      return {
+        titulo: "Publicar Vaga"
+      }
+    }
 }
 </script>
