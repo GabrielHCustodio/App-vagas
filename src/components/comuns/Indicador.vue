@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: "Indicador",
+    name: "IndicadorDados",
     props: ['titulo' , 'indicador' , 'bg' , 'color'],
     computed: {
         estilo() {

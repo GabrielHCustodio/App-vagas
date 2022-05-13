@@ -21,6 +21,6 @@
 
 <script>
 export default {
-    name: 'Topo'
+    name: 'TopoNav'
 }
 </script>

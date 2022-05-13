@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import ExibirVagas from '../views/ExibirVagas.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'ExibirVagas',
+    component: ExibirVagas
   },
   {
     path: '/publicarVagas',
