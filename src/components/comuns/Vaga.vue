@@ -8,9 +8,8 @@
                     </div>
                     <div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox">
+                            <input class="form-check-input" type="checkbox" v-model="favoritada">
                             <label class="form-check-label">Favoritar</label>
-                            <button class="btn btn-danger" @click="dispararEventoMitt()">Teste</button>
                         </div>
                     </div>
                 </div>
@@ -28,6 +27,20 @@
 <script>
 export default {
     name: "VagasRecebidas",
+    data() {
+        return {
+            favoritada: false
+        }
+    },
+    watch: {
+        favoritada(valorNovo) {
+            if(valorNovo) {
+                this.$emitter.emit('favoritarVaga', this.titulo)
+            }else {
+                this.$emitter.emit('desfavoritarVaga', this.titulo)
+            }
+        }
+    },
     props: {
         titulo: {
             type: String,
@@ -80,10 +93,6 @@ export default {
             return dataPublicacao.toLocaleDateString('pt-BR')
         }
     },
-    methods: {
-        dispararEventoMitt() {
-            this.$emitter.emit('eventoGlobal' , 'Evento disparado com Mitt!!!')
-        }
-    }
+    methods: {}
 }
 </script>
