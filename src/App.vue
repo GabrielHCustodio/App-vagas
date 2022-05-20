@@ -1,7 +1,13 @@
 <template>
   <vagas-favoritas></vagas-favoritas>
   <topo-nav />
-  <alerta-cadastro v-if="exibirAlerta"/>
+  <alerta-cadastro v-if="exibirAlerta" :tipo="alerta.tipo">
+    <template v-slot:titulo>
+      <h3>{{ alerta.titulo }}</h3>
+    </template>
+
+    <p>{{alerta.descricao}}</p>
+  </alerta-cadastro>
   <router-view/>
 </template>
 
@@ -12,6 +18,7 @@ import AlertaCadastro from "@/components/comuns/Alerta.vue"
 export default {
   data() {
     return {
+      alerta: { titulo: '' , descricao: '' , tipo: ''},
       exibirAlerta: false
     }
   },
@@ -21,10 +28,10 @@ export default {
     AlertaCadastro
   },
   mounted() {
-    this.$emitter.on('alerta', () => {
+    this.$emitter.on('alerta', (a) => {
+      this.alerta = a
       this.exibirAlerta = true
       setTimeout(() => this.exibirAlerta = false , 4000)
-      console.log('Mensagem personalizada')
     })
   }
 }
